@@ -30,3 +30,6 @@ Rodolfo, Linguagens:
 
 OBS: Rodolfo, não se esqueça de baixar as estenções que
 vc precisa usar na linha de codigo do php (PHP Intelephense).
+Outra coisa importante, leia os asquivos do trabalho do
+professor caso tenha algo faltando de requisto no nosso 
+projeto (caso se você ter tempo).
