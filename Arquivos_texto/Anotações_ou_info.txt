@@ -1,0 +1,32 @@
+REQUISITOS PARA REALIZAR O PROJETO PHP:
+
+Consulta de disponibilidade de salas
+- Não precisa usar dados reais;
+- Devo conseguir ver se uma sala esta ocupada em determinado horário perfis;
+- usuário comuns = alunos;
+- usuários: C/privilegios elevados = professores;
+- professores quando entram no sistema podem reservar salas;		
+- Não é obrigatório bootstrap e responstuidade;
+ 
+
+Requisitos de linguagem:
+
+-html;
+-css;
+-php;
+-xamp;
+-mysql;
+-opcional (Js);
+
+Jonathan, Linguagens:
+- html;
+- css;
+- opcional (js);
+
+Rodolfo, Linguagens:
+- php;
+- xamp;
+- mysql;
+
+OBS: Rodolfo, não se esqueça de baixar as estenções que
+vc precisa usar na linha de codigo do php (PHP Intelephense).
