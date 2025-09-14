@@ -1,58 +1,48 @@
-// Simulação de banco de dados no localStorage
-function register() {
-  const user = document.getElementById("regUser").value;
-  const pass = document.getElementById("regPass").value;
+// Pegando elementos do DOM
+const loginScreen = document.getElementById("loginScreen");
+const registerScreen = document.getElementById("registerScreen");
+const linkLogin = document.getElementById("linkLogin");
 
-  if (user && pass) {
-    localStorage.setItem(user, pass);
-    alert("Cadastro realizado com sucesso!");
+// Eventos para trocar de tela
+linkLogin.addEventListener("click", function(e){
+    e.preventDefault();
     showLogin();
-  } else {
-    alert("Preencha todos os campos!");
-  }
-}
+});
 
-function login() {
-  const user = document.getElementById("loginUser").value;
-  const pass = document.getElementById("loginPass").value;
-  const storedPass = localStorage.getItem(user);
-
-  if (storedPass && storedPass === pass) {
-    alert("Login realizado com sucesso!");
-    showRooms();
-  } else {
-    alert("Usuário ou senha incorretos!");
-  }
-}
-
-function logout() {
-  showLogin();
-}
-
+// Funções de mostrar telas
 function showRegister() {
-  document.getElementById("loginScreen").classList.add("hidden");
-  document.getElementById("registerScreen").classList.remove("hidden");
-  document.getElementById("roomsScreen").classList.add("hidden");
+    loginScreen.classList.add("hidden");
+    registerScreen.classList.remove("hidden");
 }
 
 function showLogin() {
-  document.getElementById("loginScreen").classList.remove("hidden");
-  document.getElementById("registerScreen").classList.add("hidden");
-  document.getElementById("roomsScreen").classList.add("hidden");
+    loginScreen.classList.remove("hidden");
+    registerScreen.classList.add("hidden");
 }
 
-function showRooms() {
-  document.getElementById("loginScreen").classList.add("hidden");
-  document.getElementById("registerScreen").classList.add("hidden");
-  document.getElementById("roomsScreen").classList.remove("hidden");
+// Funções de cadastro e login
+function register() {
+    const user = document.querySelector("#registerScreen input[type=text]").value;
+    const pass = document.querySelector("#registerScreen input[type=password]").value;
 
-  const rooms = ["Sala 101", "Sala 102", "Sala 103", "Sala 104"];
-  const roomList = document.getElementById("roomList");
-  roomList.innerHTML = "";
+    if (user && pass) {
+        localStorage.setItem(user, pass);
+        alert("Cadastro realizado com sucesso!");
+        showLogin();
+    } else {
+        alert("Preencha todos os campos!");
+    }
+}
 
-  rooms.forEach((room) => {
-    const li = document.createElement("li");
-    li.textContent = room + " - Disponível";
-    roomList.appendChild(li);
-  });
+function login() {
+    const user = document.getElementById("loginUser").value;
+    const pass = document.getElementById("loginPass").value;
+    const storedPass = localStorage.getItem(user);
+
+    if (storedPass && storedPass === pass) {
+        alert("Login realizado com sucesso!");
+        // Aqui você pode adicionar o que acontece após o login
+    } else {
+        alert("Usuário ou senha incorretos!");
+    }
 }

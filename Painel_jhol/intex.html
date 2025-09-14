@@ -8,14 +8,22 @@
 <body>
 <div class="container">
 
-    <!-- Tela de Login -->
+   
     <div id="loginScreen" class="screen">
       <h2>Login</h2>
       <input type="text" id="loginUser" placeholder="Usuário">
-      <br><input type="password" id="loginPass" placeholder="Senha">
+      <input type="password" id="loginPass" placeholder="Senha">
       <button onclick="login()">Entrar</button>
       <p>Não tem conta? <a href="#" onclick="showRegister()">Cadastre-se</a></p>
     </div>
+
+   <div id="registerScreen" class="screen hidden">
+     <h2>Cadastro</h2>
+     <input type="text" placeholder="Usuário">
+     <input type="password" placeholder="Senha">
+     <button onclick="register()">Cadastrar</button>
+     <p>Já tem conta? <a href="#" id="linkLogin">Voltar ao login</a></p>
+   </div>
 
 </div>
  
