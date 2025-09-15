@@ -1,12 +1,77 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f2f2f2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background: #525151;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* remove scroll horizontal */
+  display: flex;            /* ativa flexbox */
+  justify-content: center;  /* centraliza horizontal */
+  align-items: center;      /* centraliza vertical */
+  height: 100vh;            /* ocupa toda a altura da tela */
+  flex-direction: column;   /* mantém conteúdo em coluna */
+  box-sizing: border-box;
 }
 
+/* Barra vermelha no topo */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: rgb(3, 3, 3);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  min-width: 120px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px 0;
+}
+
+.dropdown-content button {
+  background: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+/* Container central */
 .container {
   background: white;
   padding: 20px;
@@ -14,6 +79,8 @@ body {
   width: 300px;
   text-align: center;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  position: relative;
+  margin: 0; /* remover margens que interferem na centralização */
 }
 
 input {
@@ -32,4 +99,37 @@ button {
 
 .hidden {
   display: none;
+}
+
+/* Texto do papel */
+.role-label {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  color: rgba(0,0,0,0.3);
+  font-size: 14px;
+}
+
+/* Barra inferior */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: rgb(7, 7, 7);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  color: white;
+  font-size: 14px;
+  z-index: 1000;
+}
+
+.logo {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  flex: 1; /* Ocupa o espaço à esquerda */
 }

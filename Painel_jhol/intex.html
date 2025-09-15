@@ -6,9 +6,20 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="container">
 
-   
+<div class="top-bar">
+  <div class="logo">Reserva de Salas Etec</div>
+  <div class="dropdown">
+    <div id="dropLabel" class="dropbtn">Entrar como ▼</div>
+    <div class="dropdown-content">
+      <button onclick="setRole('Professor')">Professor</button>
+      <button onclick="setRole('Aluno')">Aluno</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  
     <div id="loginScreen" class="screen">
       <h2>Login</h2>
       <input type="text" id="loginUser" placeholder="Usuário">
@@ -26,7 +37,11 @@
    </div>
 
 </div>
- 
+  <!-- Barra inferior -->
+<div class="bottom-bar">
+  Feitos por Rodolfo e Jonathan
+</div>
+
   <script src="ações.js"></script>
 </body>
 </html>

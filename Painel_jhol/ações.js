@@ -1,3 +1,10 @@
+// Função para mudar o texto de Professor/Aluno
+function setRole(role) {
+  const dropLabel = document.getElementById("dropLabel");
+  dropLabel.textContent = role + " ▼";
+    localStorage.setItem("selectedRole", role);
+}
+
 // Pegando elementos do DOM
 const loginScreen = document.getElementById("loginScreen");
 const registerScreen = document.getElementById("registerScreen");
