@@ -1,0 +1,242 @@
+HTML
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciamento de Salas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="logo">Reserva de Salas Etec</div>
+  <div class="dropdown">
+    <div id="dropLabel" class="dropbtn">Entrar como ▼</div>
+    <div class="dropdown-content">
+      <button onclick="setRole('Professor')">Professor</button>
+      <button onclick="setRole('Aluno')">Aluno</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  
+    <div id="loginScreen" class="screen">
+      <h2>Login</h2>
+      <input type="text" id="loginUser" placeholder="Usuário">
+      <input type="password" id="loginPass" placeholder="Senha">
+      <button onclick="login()">Entrar</button>
+      <p>Não tem conta? <a href="#" onclick="showRegister()">Cadastre-se</a></p>
+    </div>
+
+   <div id="registerScreen" class="screen hidden">
+     <h2>Cadastro</h2>
+     <input type="text" placeholder="Usuário">
+     <input type="password" placeholder="Senha">
+     <button onclick="register()">Cadastrar</button>
+     <p>Já tem conta? <a href="#" id="linkLogin">Voltar ao login</a></p>
+   </div>
+
+</div>
+  <!-- Barra inferior -->
+<div class="bottom-bar">
+  Feitos por Rodolfo e Jonathan
+</div>
+
+  <script src="ações.js"></script>
+</body>
+</html>
+
+CSS:
+body {
+  font-family: Arial, sans-serif;
+  background: #525151;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* remove scroll horizontal */
+  display: flex;            /* ativa flexbox */
+  justify-content: center;  /* centraliza horizontal */
+  align-items: center;      /* centraliza vertical */
+  height: 100vh;            /* ocupa toda a altura da tela */
+  flex-direction: column;   /* mantém conteúdo em coluna */
+  box-sizing: border-box;
+}
+
+/* Barra vermelha no topo */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: rgb(3, 3, 3);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  min-width: 120px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1000;
+  flex-direction: column;
+  gap: 5px;
+  padding: 5px 0;
+}
+
+.dropdown-content button {
+  background: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
+
+/* Container central */
+.container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  position: relative;
+  margin: 0; /* remover margens que interferem na centralização */
+}
+
+input {
+  display: block;
+  margin: 10px auto;
+  padding: 8px;
+  width: 90%;
+}
+
+button {
+  padding: 10px;
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Texto do papel */
+.role-label {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  color: rgba(0,0,0,0.3);
+  font-size: 14px;
+}
+
+/* Barra inferior */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: rgb(7, 7, 7);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  color: white;
+  font-size: 14px;
+  z-index: 1000;
+}
+
+.logo {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  flex: 1; /* Ocupa o espaço à esquerda */
+}
+
+JS: 
+// Função para mudar o texto de Professor/Aluno
+function setRole(role) {
+  const dropLabel = document.getElementById("dropLabel");
+  dropLabel.textContent = role + " ▼";
+    localStorage.setItem("selectedRole", role);
+}
+
+// Pegando elementos do DOM
+const loginScreen = document.getElementById("loginScreen");
+const registerScreen = document.getElementById("registerScreen");
+const linkLogin = document.getElementById("linkLogin");
+
+// Eventos para trocar de tela
+linkLogin.addEventListener("click", function(e){
+    e.preventDefault();
+    showLogin();
+});
+
+// Funções de mostrar telas
+function showRegister() {
+    loginScreen.classList.add("hidden");
+    registerScreen.classList.remove("hidden");
+}
+
+function showLogin() {
+    loginScreen.classList.remove("hidden");
+    registerScreen.classList.add("hidden");
+}
+
+// Funções de cadastro e login
+function register() {
+    const user = document.querySelector("#registerScreen input[type=text]").value;
+    const pass = document.querySelector("#registerScreen input[type=password]").value;
+
+    if (user && pass) {
+        localStorage.setItem(user, pass);
+        alert("Cadastro realizado com sucesso!");
+        showLogin();
+    } else {
+        alert("Preencha todos os campos!");
+    }
+}
+
+function login() {
+    const user = document.getElementById("loginUser").value;
+    const pass = document.getElementById("loginPass").value;
+    const storedPass = localStorage.getItem(user);
+
+    if (storedPass && storedPass === pass) {
+        alert("Login realizado com sucesso!");
+        // Aqui você pode adicionar o que acontece após o login
+    } else {
+        alert("Usuário ou senha incorretos!");
+    }
+}
