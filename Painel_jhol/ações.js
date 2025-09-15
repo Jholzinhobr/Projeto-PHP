@@ -1,22 +1,18 @@
-// Função para mudar o texto de Professor/Aluno
 function setRole(role) {
   const dropLabel = document.getElementById("dropLabel");
   dropLabel.textContent = role + " ▼";
     localStorage.setItem("selectedRole", role);
 }
 
-// Pegando elementos do DOM
 const loginScreen = document.getElementById("loginScreen");
 const registerScreen = document.getElementById("registerScreen");
 const linkLogin = document.getElementById("linkLogin");
 
-// Eventos para trocar de tela
 linkLogin.addEventListener("click", function(e){
     e.preventDefault();
     showLogin();
 });
 
-// Funções de mostrar telas
 function showRegister() {
     loginScreen.classList.add("hidden");
     registerScreen.classList.remove("hidden");
@@ -27,7 +23,6 @@ function showLogin() {
     registerScreen.classList.add("hidden");
 }
 
-// Funções de cadastro e login
 function register() {
     const user = document.querySelector("#registerScreen input[type=text]").value;
     const pass = document.querySelector("#registerScreen input[type=password]").value;
@@ -48,7 +43,6 @@ function login() {
 
     if (storedPass && storedPass === pass) {
         alert("Login realizado com sucesso!");
-        // Aqui você pode adicionar o que acontece após o login
     } else {
         alert("Usuário ou senha incorretos!");
     }
