@@ -128,3 +128,29 @@ button {
   font-weight: bold;
   flex: 1; 
 }
+
+.password-container {
+  position: relative;
+  width: 90%;
+  margin: 10px auto;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 35px; /* espaço pro olho */
+  box-sizing: border-box;
+}
+
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #333;
+  font-size: 18px;
+}
+
+input[type="password"] {
+  width: calc(90% - 25px); /* Deixando espaço para o ícone */
+}

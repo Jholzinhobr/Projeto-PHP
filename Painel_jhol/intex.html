@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Gerenciamento de Salas</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 <body>
 
@@ -20,21 +22,27 @@
 
 <div class="container">
   
-    <div id="loginScreen" class="screen">
-      <h2>Login</h2>
-      <input type="text" id="loginUser" placeholder="Usuário">
+  <div id="loginScreen" class="screen">
+    <h2>Login</h2>
+    <input type="text" id="loginUser" placeholder="Usuário">
+    <div class="password-container">
       <input type="password" id="loginPass" placeholder="Senha">
-      <button onclick="login()">Entrar</button>
-      <p>Não tem conta? <a href="#" onclick="showRegister()">Cadastre-se</a></p>
+      <i class="fa-solid fa-eye eye-icon" onclick="togglePasswordVisibility('loginPass', this)"></i>
     </div>
+    <button onclick="login()">Entrar</button>
+    <p>Não tem conta? <a href="#" onclick="showRegister()">Cadastre-se</a></p>
+  </div>
 
-   <div id="registerScreen" class="screen hidden">
-     <h2>Cadastro</h2>
-     <input type="text" placeholder="Usuário">
-     <input type="password" placeholder="Senha">
-     <button onclick="register()">Cadastrar</button>
-     <p>Já tem conta? <a href="#" id="linkLogin">Voltar ao login</a></p>
-   </div>
+  <div id="registerScreen" class="screen hidden">
+    <h2>Cadastro</h2>
+    <input type="text" placeholder="Usuário">
+    <div class="password-container">
+      <input type="password" placeholder="Senha" id="registerPass">
+      <i class="fa-solid fa-eye eye-icon" onclick="togglePasswordVisibility('registerPass', this)"></i>
+    </div>
+    <button onclick="register()">Cadastrar</button>
+    <p>Já tem conta? <a href="#" id="linkLogin">Voltar ao login</a></p>
+  </div>
 
 </div>
 <div class="bottom-bar">
