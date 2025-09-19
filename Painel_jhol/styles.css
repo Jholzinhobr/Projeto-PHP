@@ -137,7 +137,7 @@ button {
 
 .password-container input {
   width: 100%;
-  padding-right: 35px; /* espaço pro olho */
+  padding-right: 40px; /* espaço pro olho */
   box-sizing: border-box;
 }
 
@@ -151,6 +151,3 @@ button {
   font-size: 18px;
 }
 
-input[type="password"] {
-  width: calc(90% - 25px); /* Deixando espaço para o ícone */
-}
